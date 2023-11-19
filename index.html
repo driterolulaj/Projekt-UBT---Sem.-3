@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway&display=swap"
@@ -22,12 +22,21 @@
         }
 
         body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
             font-family: 'Raleway', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             transition: background-color 0.3s, color 0.3s;
             margin: 0;
         }
+
+        main{
+            flex: 1;
+        }
+       
 
         body.dark-theme {
             background-color: var(--dark);
@@ -37,19 +46,18 @@
         header {
             background-color: var(--dark);
             padding: 5px 50px;
-
             color: var(--light);
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: background-color 0.3s, color 0.3s;
             user-select: none;
-        }
+        } 
 
         nav {
             display: flex;
             gap: 20px;
-
+            /* justify-self: center; */
         }
 
         nav a {
@@ -89,7 +97,7 @@
             display: flex;
             align-items: center;
             font-family: 'Dune_Rise';
-
+            
         }
 
         .logo>* {
@@ -101,6 +109,7 @@
         }
 
         .container {
+            flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -123,8 +132,6 @@
             transform: scale(1.017);
         }
 
-
-
         .product button {
             display: inline-block;
             padding: 10px 20px;
@@ -139,8 +146,6 @@
             transition: 0.2s;
         }
 
-
-
         .product button:hover {
             color: var(--light);
             background-color: var(--dark);
@@ -148,18 +153,102 @@
 
         }
 
-
-
-
-
         footer {
             background-color: var(--dark);
             color: var(--light);
             padding: 10px;
             text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        }
+
+        .foot{
+            flex-wrap: wrap;
+            text-align:left;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .aboutUs{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .au{
+            font-weight: bold;
+            font-size: x-large;
+        }
+
+        .leftFooter>a{
+            color: white;
+            text-decoration: none;
+        }
+        .leftFooter :hover{
+            color: var(--brown-dark);
+        }
+    
+        .leftFooter :active{
+            color: grey;
+        }
+
+        .costumerService{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cs{
+            font-weight: bold;
+            font-size: x-large;
+        }
+
+        .midFooter>a{
+            color: white;
+            text-decoration: none;
+        }
+        .midFooter :hover{
+            color: var(--brown-dark);
+        }
+    
+        .midFooter :active{
+            color: grey;
+        }
+
+        .contactUs{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cu{
+            font-weight: bold;
+            font-size: x-large;
+        }
+        
+        .socialMedia img{
+            width: 30px;
+            height: 30px;
+        }
+
+        .termsOfUse{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .termsOfUse > a{
+          color: white;   
+          text-decoration: solid;   
+        }
+
+        .termsOfUse :hover{
+            color: var(--brown-dark);
+        }
+
+        .termsOfUse :active{
+            color: grey;
+        }
+
+        @media screen and (max-width: 680px){
+            header{
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -217,26 +306,91 @@
             <a href="#">Contact</a>
         </nav>
         <div id="dark-mode-toggle">Toggle Dark Mode</div>
+        
     </header>
 
-    <div class="container">
-        <div class="product">
-            <h2>Product Name 1</h2>
-            <p>Description of the product goes here.</p>
-            <button class="">Add to Cart</button>
+    <main>
+        <div class="container">
+            <div class="product">
+                <h2>Product Name 1</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h2>Product Name 2</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <!-- Add more products as needed -->
+
         </div>
-
-        <div class="product">
-            <h2>Product Name 2</h2>
-            <p>Description of the product goes here.</p>
-            <button class="">Add to Cart</button>
-        </div>
-
-        <!-- Add more products as needed -->
-
-    </div>
+    </main>
 
     <footer>
+        <hr>
+        <div class="foot">
+            <div class="aboutUs">
+                <h2 class="au">About Us</h2>
+                <div class="leftFooter">
+                    <a href="#"><p>About SunSpot</p></a>
+                    <a href="#"><p>Gift Cards</p></a>
+                    <a href="#"><p>Sell on Wayfair</p></a>
+                    <a href="#"><p>Advertise With Us</p></a>
+                    <a href="#"><p>Locations</p></a>
+                    <a href="#"><p>SunSpot Credit Card</p></a>
+                    <a href="#"><p>Careers</p></a>
+                    <a href="#"><p>SunSpot Professional</p></a>
+                </div>
+            </div>
+
+            <div class="costumerService">
+                <h2 class="cs">Costumer Service</h2>
+                <div class="midFooter">
+                    <a href="#"><p>My Orders</p></a>
+                    <a href="#"><p>My Account</p></a>
+                    <a href="#"><p>Track My Order</p></a>
+                    <a href="#"><p>Return Policy</p></a>
+                    <a href="#"><p>Help Center</p></a>
+                    <a href="#"><p>Product Recalls</p></a>
+                    <a href="#"><p>SunSpot Accessibility Statement</p></a>
+                    <a href="#"><p>Quick Help</p></a>
+                </div>
+            </div>
+
+            <div class="contactUs">
+                <h2 class="cu">Contact Us</h2>
+                <div class="rightFooter">
+                    <h3 style="font-weight: bold;">Customer Service</h3>
+                    <p>Mon - Fri: 8:00 AM - 11:59 PM</p>
+                    <p>Sat: 8:00 AM - 8:00 PM</p>
+                    <p>Sun: 9:00 AM - 6:00 PM</p>
+                    <p>European Time</p>
+                    <h3 style="font-weight: bold;">Shopping Assistance</h3>
+                    <p>Mon - Fri: 8:00 AM - 11:55 PM</p>
+                    <p>Sat: 8:00 AM - 8:00 PM</p>
+                    <p>Sun: 9:00 AM - 6:00 PM</p>
+                    <p>European Time</p>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+
+        <div class="socialMedia">
+            <a href="#"><img src="icons8-twitterx-50.png" alt="twitter"></a>
+            <a href="#"><img src="icons8-facebook-64.png" alt="facebook"></a>
+            <a href="#"><img src="icons8-pinterest-50.png" alt="pinterest"></a>
+            <a href="#"><img src="instagram.png" alt="instagram"></a>
+        </div>
+        <br>
+        <div class="termsOfUse">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Your Privacy Rights & Choices</a><br>
+        </div>
+        <br>
         &copy; SunSpot LLC. 2023 Home Appliances Store. All rights reserved.
     </footer>
 
