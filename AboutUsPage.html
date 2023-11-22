@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About SunSpot | Who We Are</title>
+    <style>
+        :root{
+            --dark:#58626c ;
+            --light:#f5f1ee;
+            --brown-dark:#ecc1a1;
+            --brown-light:#dac8be;
+        }
+        @font-face {
+            font-family: Dune_Rise;
+            src: url(Dune_Rise.ttf);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+        }
+
+        body.dark-theme {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        header {
+            background-color: var(--dark);
+            padding-top: 5px;
+            padding-bottom: 5px;
+            color: var(--light);
+            transition: background-color 0.3s, color 0.3s;
+            user-select: none;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        } 
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            position: relative;
+            transition: opacity 0.2s;
+            opacity: 0.75;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            transition: opacity 0.2s;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--brown-dark);
+            transition: width 0.3s;
+            bottom: -4px;
+            left: 0;
+            opacity: 1;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Dune_Rise';
+        }
+
+        .logo>* {
+            padding: 0px 10px;
+        }
+
+        #dark-mode-toggle {
+            cursor: pointer;
+            padding: 5px 60px;
+            padding-left: 0%;
+        }
+
+        .top_header{
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+        }
+        .second_header{
+            display: flex;
+            padding: 4px 0;
+            justify-content: center;
+        }
+
+        .search_bar{
+            margin-right: 30px;
+            width: 1200px;
+            max-width: 550px;
+            display: flex;
+            align-items: center;
+            border-radius: 60px;
+            border: 1px solid white;
+        }
+
+        .search_bar input{
+            padding: 10px 17px;
+            flex: 1;
+            background: transparent;
+            outline: none;
+            border: 0;
+            color: white;
+        }
+
+        .search_bar button img{
+            width: 25px;
+        }
+
+        .search_bar button{
+            border: 0;
+            border-radius: 50%;
+            width: 50px;
+            height: 40px;
+            background: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top_header">
+            <h3 class="logo">SunSpot<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1" width="50" height="50" viewBox="0 0 100 100" xml:space="preserve">
+
+                    <defs>
+                    </defs>
+                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                        transform="translate(1.4065934065934016 1.4065934065934016) scale(1 1)">
+                        <path
+                            d="M 45 68 c -12.682 0 -23 -10.317 -23 -23 c 0 -12.682 10.318 -23 23 -23 c 12.683 0 23 10.318 23 23 C 68 57.683 57.683 68 45 68 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 38.652 17.61 c -0.292 0 -0.573 -0.127 -0.765 -0.356 c -0.239 -0.284 -0.301 -0.677 -0.161 -1.021 l 6.348 -15.61 C 44.227 0.247 44.593 0 45 0 s 0.773 0.247 0.926 0.623 l 6.349 15.61 c 0.14 0.344 0.077 0.737 -0.162 1.021 c -0.238 0.284 -0.616 0.414 -0.978 0.333 c -4.045 -0.881 -8.228 -0.881 -12.271 0 C 38.794 17.603 38.723 17.61 38.652 17.61 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 45 90 c -0.407 0 -0.773 -0.246 -0.926 -0.623 l -6.348 -15.61 c -0.14 -0.344 -0.078 -0.737 0.161 -1.021 c 0.239 -0.284 0.615 -0.412 0.978 -0.333 c 4.043 0.882 8.226 0.882 12.271 0 c 0.363 -0.08 0.74 0.05 0.978 0.333 c 0.239 0.283 0.302 0.677 0.162 1.021 l -6.349 15.61 C 45.773 89.754 45.407 90 45 90 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 16.61 52.349 c -0.127 0 -0.255 -0.024 -0.377 -0.073 l -15.61 -6.349 C 0.247 45.773 0 45.407 0 45 s 0.247 -0.773 0.624 -0.926 l 15.61 -6.348 c 0.343 -0.14 0.737 -0.078 1.021 0.161 c 0.284 0.239 0.412 0.616 0.333 0.978 c -0.441 2.021 -0.665 4.086 -0.665 6.135 c 0 2.049 0.224 4.113 0.665 6.136 c 0.079 0.362 -0.049 0.739 -0.333 0.978 C 17.071 52.269 16.842 52.349 16.61 52.349 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 73.39 52.349 c -0.231 0 -0.461 -0.08 -0.644 -0.235 c -0.284 -0.238 -0.412 -0.615 -0.333 -0.978 c 0.44 -2.022 0.664 -4.087 0.664 -6.136 c 0 -2.049 -0.224 -4.114 -0.664 -6.135 c -0.079 -0.362 0.049 -0.739 0.333 -0.978 c 0.283 -0.239 0.676 -0.301 1.021 -0.161 l 15.61 6.348 C 89.754 44.227 90 44.593 90 45 s -0.246 0.773 -0.623 0.926 l -15.61 6.349 C 73.645 52.324 73.517 52.349 73.39 52.349 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 20.437 30.415 c -0.028 0 -0.057 -0.001 -0.085 -0.004 c -0.37 -0.032 -0.692 -0.266 -0.836 -0.607 l -6.549 -15.527 c -0.158 -0.375 -0.073 -0.808 0.214 -1.096 c 0.288 -0.288 0.722 -0.371 1.096 -0.214 l 15.527 6.549 c 0.342 0.144 0.576 0.466 0.607 0.835 c 0.032 0.37 -0.144 0.727 -0.456 0.927 c -1.743 1.119 -3.36 2.42 -4.809 3.868 c -1.448 1.449 -2.75 3.066 -3.868 4.809 C 21.093 30.243 20.775 30.415 20.437 30.415 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 76.112 77.112 c -0.131 0 -0.263 -0.025 -0.389 -0.078 l -15.526 -6.549 c -0.342 -0.145 -0.576 -0.467 -0.607 -0.836 c -0.032 -0.37 0.144 -0.727 0.456 -0.928 c 1.745 -1.121 3.363 -2.423 4.808 -3.868 l 0 0 c 1.445 -1.444 2.747 -3.063 3.868 -4.808 c 0.201 -0.312 0.553 -0.489 0.928 -0.456 c 0.369 0.031 0.691 0.266 0.836 0.607 l 6.549 15.526 c 0.157 0.375 0.073 0.809 -0.215 1.096 C 76.628 77.011 76.372 77.112 76.112 77.112 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 69.563 30.414 c -0.339 0 -0.656 -0.171 -0.842 -0.459 c -1.121 -1.746 -2.423 -3.363 -3.868 -4.809 l 0 0 c -1.447 -1.447 -3.065 -2.749 -4.808 -3.868 c -0.313 -0.2 -0.488 -0.557 -0.456 -0.927 c 0.031 -0.37 0.266 -0.691 0.607 -0.835 l 15.526 -6.549 c 0.373 -0.158 0.808 -0.074 1.096 0.214 c 0.288 0.288 0.372 0.721 0.215 1.096 l -6.549 15.527 c -0.145 0.342 -0.467 0.576 -0.836 0.607 C 69.62 30.413 69.592 30.414 69.563 30.414 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path
+                            d="M 13.887 77.112 c -0.26 0 -0.516 -0.102 -0.707 -0.293 c -0.288 -0.288 -0.373 -0.721 -0.214 -1.096 l 6.549 -15.526 c 0.144 -0.342 0.466 -0.576 0.835 -0.607 c 0.37 -0.043 0.727 0.144 0.927 0.456 c 1.119 1.742 2.421 3.36 3.868 4.808 l 0 0 c 1.446 1.446 3.063 2.747 4.809 3.868 c 0.312 0.201 0.488 0.558 0.456 0.928 c -0.032 0.369 -0.266 0.691 -0.607 0.836 l -15.527 6.549 C 14.15 77.087 14.019 77.112 13.887 77.112 z"
+                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: var(--light); fill-rule: nonzero; opacity: 1;"
+                            transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    </g>
+                </svg>
+            </h3>
+                <div class="search_bar_container">
+                    <form action="" class="search_bar">
+                        <input type="text" placeholder="Find anything home...">
+                        <button type="submit"><img src="icons8-search-50.png" alt="search_button"></button>
+                    </form>
+                </div>
+
+            <div id="dark-mode-toggle">Toggle Dark Mode</div>
+        </div>
+        <hr>
+        <div class="second_header">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a onclick="scrollToSection('foot')">Contact</a>
+            </nav>
+        </div>
+        <hr>
+    </header>
+
+    <main>
+
+        <button id="back-to-top" onclick="scrollToTop()" >^</button>
+
+        <div class="container">
+            <div class="product">
+                <h2>Product Name 1</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h2>Product Name 2</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <!-- Add more products as needed -->
+            
+            <div class="product">
+                <h2>Product Name 3</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h2>Product Name 4</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h2>Product Name 5</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <h2>Product Name 6</h2>
+                <p>Description of the product goes here.</p>
+                <button class="">Add to Cart</button>
+            </div>
+        </div>
+
+        <div id="aboutSunSpotHeader">
+            <h1 style="text-align: center;">What We're Doing to Make an Impact</h1>
+        </div>
+
+        <div id="aboutSunSpot" class="aboutSunSpot">
+            <div class="aboutUsBox">
+                <a href=""><img class="aboutUsFoto" src="default_name.webp" alt=""></a>
+                <h2>Contributin to All the Homes We Share</h2>
+                <p>Learn more about our DEI, Social Impact, and Sustainability Work...</p>
+            </div>
+            <div class="aboutUsBox">
+                <a href=""><img class="aboutUsFoto" src="default_name2.webp" alt=""></a>
+                <h2>Building Supplier Diversity</h2>
+                <p>Learn more about the creators behind the businesses...</p>
+            </div>
+            <div class="aboutUsBox">
+                <a href="AboutUsPage.html"><img class="aboutUsFoto" src="default_name3.webp" alt=""></a>
+                <h2>All Things Home, Sustainably</h2>
+                <p>Discover so many (easy!) ways to live more sustainably...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        <div id="foot" class="foot">
+            <div class="aboutUs">
+                <h2 class="au">About Us</h2>
+                <div class="leftFooter">
+                    <a href="AboutUsPage.html"><p>About SunSpot</p></a>
+                    <a href="#"><p>Gift Cards</p></a>
+                    <a href="#"><p>Sell on SunSpot</p></a>
+                    <a href="#"><p>Advertise With Us</p></a>
+                    <a href="#"><p>Locations</p></a>
+                    <a href="#"><p>SunSpot Credit Card</p></a>
+                    <a href="#"><p>Careers</p></a>
+                    <a href="#"><p>SunSpot Professional</p></a>
+                </div>
+            </div>
+
+            <div class="costumerService">
+                <h2 class="cs">Costumer Service</h2>
+                <div class="midFooter">
+                    <a href="#"><p>My Orders</p></a>
+                    <a href="#"><p>My Account</p></a>
+                    <a href="#"><p>Track My Order</p></a>
+                    <a href="#"><p>Return Policy</p></a>
+                    <a href="#"><p>Help Center</p></a>
+                    <a href="#"><p>Product Recalls</p></a>
+                    <a href="#"><p>SunSpot Accessibility Statement</p></a>
+                    <a href="#"><p>Quick Help</p></a>
+                </div>
+            </div>
+
+            <div class="contactUs">
+                <h2 class="cu">Contact Us</h2>
+                <div class="rightFooter">
+                    <h3 style="font-weight: bold;">Customer Service</h3>
+                    <p>Mon - Fri: 8:00 AM - 11:59 PM</p>
+                    <p>Sat: 8:00 AM - 8:00 PM</p>
+                    <p>Sun: 9:00 AM - 6:00 PM</p>
+                    <p>European Time</p>
+                    <h3 style="font-weight: bold;">Shopping Assistance</h3>
+                    <p>Mon - Fri: 8:00 AM - 11:55 PM</p>
+                    <p>Sat: 8:00 AM - 8:00 PM</p>
+                    <p>Sun: 9:00 AM - 6:00 PM</p>
+                    <p>European Time</p>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+
+        <div class="socialMedia">
+            <a href="#"><img src="icons8-twitterx-50.png" alt="twitter"></a>
+            <a href="#"><img src="icons8-facebook-64.png" alt="facebook"></a>
+            <a href="#"><img src="icons8-pinterest-50.png" alt="pinterest"></a>
+            <a href="#"><img src="instagram.png" alt="instagram"></a>
+        </div>
+        <br>
+        <div class="termsOfUse">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Your Privacy Rights & Choices</a><br>
+        </div>
+        <br>
+        &copy; SunSpot LLC. 2023 Home Appliances Store. All rights reserved.
+    </footer>
+
+    <script>
+        const body = document.body;
+        const toggle = document.getElementById('dark-mode-toggle');
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+        });
+
+        function scrollToSection(section){
+
+            console.log('Received section:', section);
+
+            const section1 = document.getElementById('foot');
+            const section2 = document.getElementById('aboutSunSpotHeader');
+
+            console.log('section1:', section1);
+            console.log('section2:', section2);
+
+            if(section==='foot'){
+                console.log('Scrolling to section1');
+                section1.scrollIntoView({behavior:'smooth'});
+            }else if(section==='aboutSunSpotHeader'){
+                console.log('Scrolling to section2');
+                section2.scrollIntoView({behavior:'smooth'});
+            }else{
+                console.log('Invalid section!');
+            }
+        }
+
+        window.onscroll=function(){
+            showBackToTopButton();
+        }
+
+        function showBackToTopButton(){
+            const button = document.getElementById('back-to-top');
+            if(document.documentElement.scrollTop>20){
+                button.style.display = 'block';
+            } else{
+                button.style.display = 'none';
+            }
+        }
+
+        function scrollToTop(){
+            window.scrollTo({
+                top:0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
