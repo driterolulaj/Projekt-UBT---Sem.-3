@@ -71,6 +71,7 @@
         }
 
         nav a:hover {
+            cursor: pointer;
             opacity: 1;
             transition: opacity 0.2s;
         }
@@ -105,10 +106,6 @@
            
         }
 
-        .logo>a{
-             text-decoration: none;
-        }
-
         #dark-mode-toggle {
             cursor: pointer;
             padding: 5px 60px;
@@ -117,7 +114,7 @@
 
         .container {
             flex-wrap: wrap;
-            max-width: 1600px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 20px ;
             display: flex;
@@ -343,7 +340,7 @@
 
         .aboutSunSpot {
             flex-wrap: wrap;
-            max-width: 1600px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 20px;
             display: flex;
@@ -365,8 +362,8 @@
             border-radius: 10px;
             transition: transform 0.3s;
             text-align: center;
-            width: 480px;
-            height: 340px;
+            width: 450px;
+            height: 360px;
         }
 
 
@@ -376,17 +373,21 @@
 
         .aboutUsFoto{
             filter:grayscale(100%);
-            width: 480px;
+            width: 450px;
             height: 240px;
         }
             
+        #logoLink{
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="top_header">
-            <a href="index.html">
+            <a id="logoLink" href="index.html">
                 <h3 class="logo">SunSpot<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         version="1.1" width="50" height="50" viewBox="0 0 100 100" xml:space="preserve">
 
