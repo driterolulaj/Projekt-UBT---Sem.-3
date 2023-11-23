@@ -41,8 +41,6 @@
 
         header {
             background-color: var(--dark);
-            padding-top: 5px;
-            padding-bottom: 5px;
             color: var(--light);
             transition: background-color 0.3s, color 0.3s;
             user-select: none;
@@ -55,6 +53,7 @@
         nav {
             display: flex;
             gap: 20px;
+            font-size:17px;
         }
 
         nav a {
@@ -93,12 +92,11 @@
             align-items: center;
             font-family: 'Dune_Rise';
             cursor: pointer;
-           
+            color: #ecc1a1;
         }
 
         .logo>* {
             padding: 0px 10px; 
-           
         }
 
         .logo>a{
@@ -106,54 +104,10 @@
         }
 
         #dark-mode-toggle {
+            font-size: 17px;
             cursor: pointer;
-            padding: 5px 60px;
+            padding: 0px 60px;
             padding-left: 0%;
-        }
-
-        .container {
-            flex-wrap: wrap;
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 20px ;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .product {
-            background-color: var(--brown-light);
-            color: var(--dark);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: scale(1.017);
-        }
-
-        .product button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            background-color: var(--light);
-            color: var(--dark);
-            border: 1px solid var(--dark);
-            border-radius: 25px;
-            transition: 0.2s;
-        }
-
-        .product button:hover {
-            color: var(--light);
-            background-color: var(--dark);
-            transition: 0.2s;
-
         }
 
         footer {
@@ -281,38 +235,7 @@
             display: flex;
             padding: 4px 0;
             justify-content: center;
-        }
-
-        .search_bar{
-            margin-right: 30px;
-            width: 1200px;
-            max-width: 550px;
-            display: flex;
             align-items: center;
-            border-radius: 60px;
-            border: 1px solid white;
-        }
-
-        .search_bar input{
-            padding: 10px 17px;
-            flex: 1;
-            background: transparent;
-            outline: none;
-            border: 0;
-            color: white;
-        }
-
-        .search_bar button img{
-            width: 25px;
-        }
-
-        .search_bar button{
-            border: 0;
-            border-radius: 50%;
-            width: 50px;
-            height: 40px;
-            background: none;
-            cursor: pointer;
         }
 
         #back-to-top{
@@ -337,45 +260,6 @@
             opacity: 0.8;
         }
 
-        .aboutSunSpot {
-            flex-wrap: wrap;
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            
-        }
-
-        .aboutSunSpot>a{
-            text-decoration: none;
-        }
-
-        .aboutUsBox {
-            background-color: var(--brown-light);
-            color: var(--dark);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: transform 0.3s;
-            text-align: center;
-            width: 450px;
-            height: 360px;
-        }
-
-
-        .aboutUsBox:hover {
-            transform: scale(1.017);
-        }
-
-        .aboutUsFoto{
-            filter:grayscale(100%);
-            width: 450px;
-            height: 240px;
-        }
-
         #logoLink{
             text-decoration: none;
             color: white;
@@ -386,7 +270,7 @@
             background-image: url("bgimage.jpg");
             width: 100%;
             height: 500px;
-            background-size: 100% 100%;
+            background-size: 100% 150%;
             display: flex;
             color: white;
             align-items: center;
@@ -445,6 +329,7 @@
             color: var(--brown-dark);
             background-color: var(--light);
             transition: 0.2s;
+            cursor: pointer;
         }
     
 
@@ -465,7 +350,6 @@
         }
 
         .globalBrand1{
-            
             width: 350px;
             height: 200px;
         }
@@ -474,7 +358,6 @@
             padding-top: 40px;
             width: 630px;
             height: 500px;
-            /* border-radius: 5000px; */
             padding-left: 50px;
             padding-right: 40px;
             filter: grayscale(100%);
@@ -484,7 +367,7 @@
             margin-top: 50px;
             background-color:#ecc1a1;
             width: 100%;
-            height: 560px;
+            height: 580px;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -492,24 +375,61 @@
         }
 
         .fact1{
-            padding:20px 260px;
+            padding:40px 0;
+            width: 100%;
+            max-width: 1100px;
             display: flex;
             justify-content: space-between;
+            text-align: center;
+        }
+
+        .fact2{
+            padding:40px 0;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .exploreUs{
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-bottom: 60px;
+            display: flex;
+            justify-content: space-around;
             align-items: center;
         }
 
-        /* .fact1 p{
-            width: 300px;
-            height: 100px;
-        } */
-
-        .fact2{
-            padding:20px 260px;
-            display: flex;
-            justify-content: space-between;
+        .exploreUsBox{
+            padding: 20px 0;
+            margin: 20px 0;
+            transition: transform 0.3s;
+            text-align: left;
+            width: 330px;
+            height: 300px;
         }
 
+        .exploreUsBox img{
+            width: 330px;
+            height: 240px;
+            border-radius: 10px;
+        }
 
+        .exploreUsBox a{
+            text-decoration: none;
+        }
+
+        .exploreUsBox a h2{
+            color: #58626c;
+        }
+
+        .exploreUsBox a h2:hover{
+            color: #ecc1a1;
+        }
+
+        .exploreUsBox a p{
+            color:#ecc1a1;
+        }
     </style>
 </head>
 <body>
@@ -571,7 +491,9 @@
         <div class="second_header">
             <nav>
                 <a href="index.html">Home</a>
+                <a href="AboutUsPage.html">About Us</a>
                 <a onclick="scrollToSection('foot')">Contact</a>
+                <a href="AccountPage.html">Account</a>
             </nav>
         </div>
         <hr>
@@ -639,7 +561,43 @@
             </div>
         </div>
 
-        <br><br><br><br><br><br>
+        <br><br><br>
+
+
+        <h1 style="text-align: center; font-size: 40px;">Explore More About Us</h1>
+        <div class="exploreUs">
+            
+            <div class="exploreUsBox">
+                <a href="#"><img src="exloreimage1.webp" alt="image"></a>
+                <a href="#"><h2>Who We Are</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="exploreimage2.webp" alt="image"></a>
+                <a href=""><h2>Our Impact</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="exploreimage3.webp" alt="image"></a>
+                <a href=""><h2>Careers</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="investor.jpg" alt="image"></a>
+                <a href=""><h2>Investor Relations</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="news.webp" alt="image"></a>
+                <a href=""><h2>News & Stories</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="partner.webp" alt="image"></a>
+                <a href=""><h2>Partner With Us</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+        </div>
         
     </main>
 
@@ -718,22 +676,11 @@
         });
 
         function scrollToSection(section){
-
-            console.log('Received section:', section);
-
             const section1 = document.getElementById('foot');
-            const section2 = document.getElementById('aboutSunSpotHeader');
-
-            console.log('section1:', section1);
-            console.log('section2:', section2);
-
             if(section==='foot'){
-                console.log('Scrolling to section1');
                 section1.scrollIntoView({behavior:'smooth'});
-            }else if(section==='aboutSunSpotHeader'){
-                console.log('Scrolling to section2');
-                section2.scrollIntoView({behavior:'smooth'});
-            }else{
+            }
+            else{
                 console.log('Invalid section!');
             }
         }

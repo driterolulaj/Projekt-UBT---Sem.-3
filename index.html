@@ -98,12 +98,11 @@
             align-items: center;
             font-family: 'Dune_Rise';
             cursor: pointer;
-           
+           color: #ecc1a1;
         }
 
         .logo>* {
             padding: 0px 10px; 
-           
         }
 
         #dark-mode-toggle {
@@ -355,7 +354,7 @@
         }
 
         .aboutUsBox {
-            background-color: var(--brown-light);
+            background-color: var(--brown-dark);
             color: var(--dark);
             padding: 20px;
             margin: 20px 0;
@@ -448,8 +447,9 @@
         <div class="second_header">
             <nav>
                 <a href="#">Home</a>
-                <a href="#">Products</a>
+                <a href="AboutUsPage.html">About Us</a>
                 <a onclick="scrollToSection('foot')">Contact</a>
+                <a href="AccountPage.html">Account</a>
             </nav>
         </div>
         <hr>
@@ -504,14 +504,14 @@
         </div>
 
         <div id="aboutSunSpot" class="aboutSunSpot">
-            <a href="">
+            <a href="AboutUsPage.html">
                 <div class="aboutUsBox">
                     <img class="aboutUsFoto" src="default_name.webp" alt="">
                     <h2>Contributin to All the Homes We Share</h2>
                     <p>Learn more about our DEI, Social Impact, and Sustainability Work...</p>
                 </div>
             </a>
-            <a href="">
+            <a href="AboutUsPage.html">
                 <div class="aboutUsBox">
                     <img class="aboutUsFoto" src="default_name2.webp" alt="">
                     <h2>Building Supplier Diversity</h2>
@@ -603,22 +603,12 @@
         });
 
         function scrollToSection(section){
-
-            console.log('Received section:', section);
-
             const section1 = document.getElementById('foot');
-            const section2 = document.getElementById('aboutSunSpotHeader');
-
-            console.log('section1:', section1);
-            console.log('section2:', section2);
-
             if(section==='foot'){
                 console.log('Scrolling to section1');
                 section1.scrollIntoView({behavior:'smooth'});
-            }else if(section==='aboutSunSpotHeader'){
-                console.log('Scrolling to section2');
-                section2.scrollIntoView({behavior:'smooth'});
-            }else{
+            }
+            else{
                 console.log('Invalid section!');
             }
         }
