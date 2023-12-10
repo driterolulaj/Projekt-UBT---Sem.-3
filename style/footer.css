@@ -1,0 +1,12 @@
+footer {
+	background-color:rgb(var(--dark));
+	color:rgb(var(--light));
+	padding: 10px;
+	text-align: center;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+
+}

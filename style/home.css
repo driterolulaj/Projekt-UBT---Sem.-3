@@ -1,0 +1,73 @@
+.home_container{
+display:flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+}
+.hero {
+	background-color: rgba(var(--brown-light), 0.5);
+	flex-basis: 70% ;
+	height: calc(100vh - 90px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.right_side{
+	height: calc(100vh - 90px);
+	flex-basis: 30%;
+	background-color: rgba(var(--dark), 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.about_us {
+	width: 70%;
+}
+.contact{
+	width: 70%;
+}
+
+
+.home_button{
+	text-decoration: none;
+	border: none;
+	background-color: rgba(var(--light),1);
+	color: rgb(var(--dark)) ;
+	border-radius: 5px;
+	width:auto;
+	height: 30px;
+	padding: 10px 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.3s;
+}
+.home_button:hover {
+	scale: 1.1;
+
+	transition: 0.3s;
+
+}
+
+
+.home_title{
+	font-size: 40px;
+	font-family: "Dune_Rise";
+}
+
+.home_desc{
+	font-family: 'Raleway';
+	font-size:22px;
+}
+
+.right_side p {
+	font-size: 20px;
+}
+
+.right_side>.contact>a{
+text-decoration: none;
+}
