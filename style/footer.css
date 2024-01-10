@@ -1,0 +1,96 @@
+footer {
+    background-color: rgb(var(--dark));
+    color: rgb(var(--light));
+    /* padding: 10px; */
+    text-align: center;
+    width: 100%;
+}
+
+.foot {
+    flex-wrap: wrap;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; 
+}
+
+.aboutUs{
+    display: flex;
+    flex-direction: column;
+}
+
+.au{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.leftFooter>a{
+    color: white;
+    text-decoration: none;
+}
+.leftFooter :hover{
+    color: rgb(var(--brown-dark));
+}
+
+.leftFooter :active{
+    color: grey;
+}
+
+.costumerService{
+    display: flex;
+    flex-direction: column;
+}
+
+.cs{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.midFooter>a{
+    color: white;
+    text-decoration: none;
+}
+.midFooter :hover{
+    color: rgb(var(--brown-dark));
+}
+
+.midFooter :active{
+    color: grey;
+}
+
+.contactUs{
+    display: flex;
+    flex-direction: column;
+}
+
+.cu{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.socialMedia img{
+    width: 30px;
+    height: 30px;
+}
+
+.termsOfUse{
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.termsOfUse > a{
+  color: white;   
+  text-decoration: none;   
+}
+
+.termsOfUse :hover{
+    color: rgb(var(--brown-dark));
+}
+
+.termsOfUse :active{
+    color: grey;
+}
+
+
