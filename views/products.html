@@ -20,7 +20,57 @@
 
 
 	<style>
+		
+		.slider{
+			width: 60%;
+			height: 500px;
+			margin: auto;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			box-shadow: 0px 0px 3px grey;
+			position: relative;
+			overflow: hidden;
+		}
 
+
+		.slide{
+			width: 100%;
+			height: 100%;
+			position:absolute;
+		}
+
+		.nav{
+			text-align: center;
+			margin-top: 15px;
+		}
+
+		.nav button{
+			font-size: 25px;
+			font-weight: bold;
+			text-align: center;
+			text-decoration: none;
+			background-color: rgb(var(--brown-light));
+			border: 1px solid rgb(var(--dark));
+			border-radius:25px;
+			color: rgb(var(--dark));
+			transition: 0.2s;
+			width: 125%;
+			padding: 5px;
+		}
+
+		.nav>button:hover {
+			background-color: rgb(var(--dark));
+			color: rgb(var(--light));
+
+			border: 1px solid rgb(var(--light));
+
+			transition: 0.2s;
+			cursor: pointer;
+		}
+
+		.slider_buttons{
+			display: flex;
+		}
 
 	</style>
 </head>
@@ -79,6 +129,7 @@
 			<a href="/views/products.html">Products</a>
             <a href="/views/aboutus.html">About Us</a>
 			<a onclick="scrollToSection('foot')">Contact</a>
+			<a href="/views/cart.html">Cart</a>
 		</nav>
 		<nav class="login">
 			<a href="/views/signup.html">
@@ -95,21 +146,70 @@
 		</nav>
 	
 	</header>
+
+	<div class="slider_buttons">
+		<div class="nav" style="margin: 250px 0 0 300px;">
+			<button onclick="goPrev()">
+				<
+			</button>
+		</div>
+
+			<div class="slider">
+					<a href="/views/item.html?id=1"><img src="https://cackle.co.nz/hardware/wp-content/uploads/sites/3/2023/06/510288-0.jpg" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=2"><img src="https://www.business2community.com/wp-content/uploads/2013/04/HP-Envy-Spectre-XT-Review.jpg" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=3"><img src="https://reviewed-com-res.cloudinary.com/image/fetch/s--NMTqMJpN--/b_white,c_limit,cs_srgb,f_auto,fl_progressive.strip_profile,g_center,q_auto,w_792/https://reviewed-production.s3.amazonaws.com/attachment/94d18a105bcf4a2d/Dell-Inspiron-14-7420-About.jpg" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=4"><img src="https://laptopmedia.com/wp-content/uploads/2020/12/Aspire5_KSP6.jpg" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=5"><img src="https://cdn.mos.cms.futurecdn.net/Q2eW2m6uASnYsWRn5m7mr4.jpg" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=6"><img src="https://www.apple.com/v/ipad-pro/am/images/overview/hero/hero_combo__fcqcc3hbzjyy_large.jpg" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=7"><img src="https://external-preview.redd.it/hv_h2fMMFVz19ifVH9vHmVL_2-tOqlTt9bPmu7GZyXo.jpg?auto=webp&s=5ec5a6149ced1076ded1941ee8cb18d3e0eae603" class="slide" alt="" ></a>
+					<a href="/views/item.html?id=8"><img src="https://www.pcworld.com/wp-content/uploads/2023/04/fitbitlineup-100900381-orig.jpg?quality=50&strip=all&w=1024" class="slide" alt="" ></a>
+			</div>
+
+		<div class="nav" style="margin: 250px 300px 0 0;">
+			<button onclick="goNext()">
+				>
+			</button>
+		</div>
+	</div>
 	<main>
         <button id="back-to-top" onclick="scrollToTop()" >^</button>
 
-		<div class="container" id="card-container">
-
-
-
-		</div>
+		<div class="container" id="card-container"></div>
 
 	</main>
 
-
-
 	<script>
 
+		const slides = document.querySelectorAll(".slide")
+		let counter = 0;
+		const totalSlides = slides.length;
+		
+		slides.forEach(
+			(slide, index)=>{
+				slide.style.left = `${index * 100}%`;
+			}
+		);
+
+		const goPrev = () => {
+			counter = (counter - 1 + totalSlides) % totalSlides;
+			slideImage();
+		};
+
+		const goNext = () => {
+			counter = (counter + 1) % totalSlides;
+			slideImage();
+		};
+
+		const slideImage = () => {
+			slides.forEach(
+				(slide) => {
+					slide.style.transform = `translateX(-${counter * 100}%)`
+				}
+			);
+		};
+
+		let fetchedProduct;
+		
 		fetch('../data.json')
 			.then(response => response.json())
 			.then(data => {
@@ -189,9 +289,39 @@
 					card.addEventListener('click', () => {
 						window.location.replace('/views/item.html?id=' + device.id)
 					})
+
+					add_to_cart.addEventListener('click', () => {
+						fetchedProduct = device;
+						fillCart(fetchedProduct);
+					})
+				
 				});
 			})
 			.catch(error => console.error('Error fetching data:', error));
+
+			let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+			function fillCart(product) {
+				const cartContainer = document.getElementById('card-container');
+
+				const cartItem = document.createElement('div');
+				cartItem.classList.add('cart-item');
+
+				cartItem.innerHTML = `
+					<img src="${product.image}" alt="${product.name}">
+					<div class="cart-item-details">
+						<h3>${product.name}</h3>
+						<p>Price: $${product.price.toFixed(2)}</p>
+					</div>
+					<button onclick="removeItem(this, ${product.id})">Remove</button>
+				`;
+
+				cartItems.push(product);
+				localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+				window.location.href = 'http://127.0.0.1:5500/views/cart.html'; 
+			}
+
 	</script>
 
 	
@@ -215,7 +345,7 @@
 		<div class="costumerService">
 			<h2 class="cs">Costumer Service</h2>
 			<div class="midFooter">
-				<a href="#"><p>My Orders</p></a>
+				<a href="/views/cart.html"><p>My Orders</p></a>
 				<a href="#"><p>My Account</p></a>
 				<a href="#"><p>Track My Order</p></a>
 				<a href="#"><p>Return Policy</p></a>
@@ -258,7 +388,7 @@
 		<a href="#">Your Privacy Rights & Choices</a><br>
 	</div>
 	<br>
-	&copy; SunSpot LLC. 2023 Home Appliances Store. All rights reserved.
+	&copy; SunSpot LLC. 2024 Home Appliances Store. All rights reserved.
 </footer>
 
 </body>

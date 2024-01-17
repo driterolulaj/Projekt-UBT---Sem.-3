@@ -13,6 +13,89 @@
 <link rel="stylesheet" href="../style/back_to_top.css">
 
 	<title>SunSpot</title>
+
+    <style>
+        .cart-container {
+            width: 1000px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .cart-item img {
+            max-width: 70px;
+            max-height: 70px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .cart-item button {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cart-item button:hover {
+            background-color: #c0392b;
+        }
+
+        .cart-total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .cart-total p {
+            margin: 5px 0;
+        }
+
+        .cart-total button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cart-total button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -69,7 +152,7 @@
 			<a href="/views/products.html">Products</a>
             <a href="/views/aboutus.html">About Us</a>
 			<a onclick="scrollToSection('foot')">Contact</a>
-			<a href="/views/cart.html">Cart</a>
+            <a href="#">Cart</a>
 		</nav>
 		<nav class="login">
 			<a href="/views/signup.html">
@@ -86,184 +169,140 @@
 		</nav>
 
 	</header>
-	<div id="item-card-container">
 
-	</div>
+    <div class="cart-container" id="cartContainer">
+        <h1>Shopping Cart</h1>
+        <hr>
+    </div>
 
-	<script>
+    <footer>
+        <hr>
+        <div id="foot" class="foot">
+            <div class="aboutUs">
+                <h2 class="au">About Us</h2>
+                <div class="leftFooter">
+                    <a href="#"><p>Who We Are</p></a>
+                    <a href="#"><p>Gift Cards</p></a>
+                    <a href="#"><p>Sell on SunSpot</p></a>
+                    <a href="#"><p>Advertise With Us</p></a>
+                    <a href="#"><p>Locations</p></a>
+                    <a href="#"><p>SunSpot Credit Card</p></a>
+                    <a href="#"><p>Careers</p></a>
+                    <a href="#"><p>SunSpot Professional</p></a>
+                </div>
+            </div>
 
-		let fetchedProduct;
+            <div class="costumerService">
+                <h2 class="cs">Costumer Service</h2>
+                <div class="midFooter">
+                    <a href="#"><p>My Orders</p></a>
+                    <a href="#"><p>My Account</p></a>
+                    <a href="#"><p>Track My Order</p></a>
+                    <a href="#"><p>Return Policy</p></a>
+                    <a href="#"><p>Help Center</p></a>
+                    <a href="#"><p>Product Recalls</p></a>
+                    <a href="#"><p>SunSpot Accessibility Statement</p></a>
+                    <a href="#"><p>Quick Help</p></a>
+                </div>
+            </div>
 
-		const querySearch = window.location.search;
-		const id = new URLSearchParams(querySearch).get('id')
-		fetch('../data.json')
-			.then(response => response.json())
-			.then(data => {
-				for (const device of data) {	
-					if (device.id == id) {
-						fetchedProduct = device;
+            <div class="contactUs">
+                <h2 class="cu">Contact Us</h2>
+                <div class="rightFooter">
+                    <h3 style="font-weight: bold;">Customer Service</h3>
+                    <p>Mon - Fri: 8:00 AM - 11:59 PM</p>
+                    <p>Sat: 8:00 AM - 8:00 PM</p>
+                    <p>Sun: 9:00 AM - 6:00 PM</p>
+                    <p>European Time</p>
+                    <h3 style="font-weight: bold;">Shopping Assistance</h3>
+                    <p>Mon - Fri: 8:00 AM - 11:55 PM</p>
+                    <p>Sat: 8:00 AM - 8:00 PM</p>
+                    <p>Sun: 9:00 AM - 6:00 PM</p>
+                    <p>European Time</p>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
 
-						const container = document.getElementById('item-card-container');
+        <div class="socialMedia">
+            <a href="#"><img src="../assets/icons8-twitterx-50.png" alt="twitter"></a>
+            <a href="#"><img src="../assets/icons8-facebook-64.png" alt="facebook"></a>
+            <a href="#"><img src="../assets/icons8-pinterest-50.png" alt="pinterest"></a>
+            <a href="#"><img src="../assets/instagram.png" alt="instagram"></a>
+        </div>
+        <br>
+        <div class="termsOfUse">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Your Privacy Rights & Choices</a><br>
+        </div>
+        <br>
+        &copy; SunSpot LLC. 2024 Home Appliances Store. All rights reserved.
+    </footer>
 
-						const card = document.createElement('div');
-						card.className = 'item-card';
-						const card_main_container = document.createElement("div");
-						card_main_container.classList="card_main_container";
-						const imgContainer = document.createElement('div');
-						imgContainer.className = 'img-container';
+    <script>
 
-						const img = document.createElement('img');
-						img.src = device.image;
-						img.alt = 'Device Image';
-						img.className = 'card-img';
-						imgContainer.appendChild(img);
+        let cartItems = [];
 
-						if (device.sale.isOnSale) {
-							const sale_percentage = document.createElement('div');
-							sale_percentage.className = 'sale-percentage';
-							sale_percentage.textContent = `${device.sale.discountPercentage}%`;
-							imgContainer.appendChild(sale_percentage);
+        document.addEventListener('DOMContentLoaded', function() {
+      
+        cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-						}
+        const cartContainer = document.getElementById('cartContainer');
 
+        cartItems.forEach(item => {
+             const cartItem = document.createElement('div');
+             cartItem.classList.add('cart-item');
 
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+                <h3>${item.name}</h3>
+                <p>Price: $${item.price.toFixed(2)}</p>
+            </div>
+            <button onclick="removeItem(this, ${item.id})">Remove</button>
+        `;
 
-						const card_body = document.createElement('div');
-						card_body.className = 'card-body';
+        cartContainer.appendChild(cartItem);
+            });
 
-						const heading = document.createElement('h1');
-						heading.textContent = device.name
-						heading.className = 'card-name';	
-						const description = document.createElement('p');
-						description.textContent = device.description
-						description.className = 'card-description';
-						const details = {
-							"name": device.name,
-							"processor": device.processor,
-							"ram size": device.ram_size,
-							"storage": device.storage,
-							"display": { "width": device.display.width, "height": device.display.height },
-							"os": device.os,
-							"battery": device.battery,
-							"weight": device.weight,
-							"dimensions": { "length": device.dimensions.length, "width": device.dimensions.width, "depth": device.dimensions.depth },
-							"camera": { "front": device.camera.front, "rear": device.camera.rear },
-							"additional features": device.additional_features,
-					
-						};
+            updateTotal();
+        });
 
+        function updateTotal() {
+            const cartTotal = document.createElement('div');
+            cartTotal.classList.add('cart-total');
 
-						const table = document.createElement('table');
-						table.className = "item_table"
-						table.border = '1';
+            const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+            cartTotal.innerHTML = `
+                <p>Total: $${totalAmount.toFixed(2)}</p>
+                <button onclick="checkout()">Checkout</button>
+            `;
 
+            const existingTotal = document.querySelector('.cart-total');
+            if (existingTotal) {
+                existingTotal.replaceWith(cartTotal);
+            } else {
+                document.getElementById('cartContainer').appendChild(cartTotal);
+            }
+        }
 
+            function removeItem(button, productId) {
+                const cartItem = button.parentElement;
+                cartItem.remove();
 
-						for (const key in details) {
-							const value = details[key];
+                const indexToRemove = cartItems.findIndex(item => item.id === productId);
+                if (indexToRemove !== -1) {
+                    cartItems.splice(indexToRemove, 1);
+                }
 
-							console.log(
-								value !== null && value !== "" && (typeof value === 'object' && !Object.values(value).every(val => val === null))
-							)
+                updateTotal();
 
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+    </script>
 
-							if (
-								value !== null && value !== "" && !(typeof value === 'object' && Object.values(value).every(val => val === null))
-							) {
-								const dataRow = table.insertRow();
-
-								const header_cell = dataRow.insertCell(0);
-								header_cell.textContent = key;
-								const data_cell = dataRow.insertCell(1);
-
-
-								if (typeof value === 'object') {
-
-									const ul = document.createElement('ul');
-									if (Array.isArray(value)) {
-										value.forEach(item => {
-											const li = document.createElement('li');
-											li.textContent = item;
-											ul.appendChild(li);
-										});
-									} else {
-										for (const subKey in value) {
-											const subValue = value[subKey];
-
-											if (subValue !== null) {
-												const li = document.createElement('li');
-												li.textContent = `${subKey}: ${subValue}`;
-												ul.appendChild(li);
-											}
-										}
-									}
-									data_cell.appendChild(ul);
-								} else {
-									data_cell.textContent = value;
-								}
-							}
-
-						}
-
-						card_body.appendChild(table)
-						const price_container = document.createElement('div')
-						const price = document.createElement('h1');
-						price.textContent = '$' + device.price.toFixed(2);
-						price.className = 'card-price';
-						price_container.className='price-container'
-
-
-						add_to_cart = document.createElement('button')
-						add_to_cart.className = "item_add_to_cart"
-						add_to_cart.innerHTML = "Add to Cart&nbsp;&nbsp;"
-						add_to_cart_icon = document.createElement('ion-icon')
-						add_to_cart_icon.name = 'cart'
-						add_to_cart.appendChild(add_to_cart_icon)
-						add_to_cart_icon.className = "item_ion_icon"
-						
-						price_container.appendChild(heading)
-						price_container.appendChild(description)
-						price_container.appendChild(price)
-						price_container.appendChild(add_to_cart)
-						card_main_container.appendChild(imgContainer);
-						card_main_container.appendChild(price_container);
-						card.appendChild(card_main_container)
-						card.appendChild(card_body);
-
-						add_to_cart.onclick = function () {
-							fillCart(fetchedProduct);
-						};
-
-						container.appendChild(card);
-					}
-				}
-				return null;
-			});
-
-		let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-		function fillCart(product) {
-			const cartContainer = document.getElementById('item-card-container');
-
-			const cartItem = document.createElement('div');
-			cartItem.classList.add('cart-item');
-
-			cartItem.innerHTML = `
-				<img src="${product.image}" alt="${product.name}">
-				<div class="cart-item-details">
-					<h3>${product.name}</h3>
-					<p>Price: $${product.price.toFixed(2)}</p>
-				</div>
-				<button onclick="removeItem(this, ${product.id})">Remove</button>
-			`;
-
-			cartItems.push(product);
-			localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-			window.location.href = 'http://127.0.0.1:5500/views/cart.html'; 
-		}
-
-	</script>
 </body>
 
 </html>
