@@ -100,10 +100,10 @@
 			</div>
 
 			<div class="login">
-				<form onsubmit="return validateLogIn()" novalidate>
+				<form action="login.php" method="post">
 					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" id="log_in_email" placeholder="Email" required="">
-					<input type="password" name="password" id="log_in_password" placeholder="Password" required="">
+					<input type="email" name="email" id="log_in_email" placeholder="Email" required>
+					<input type="password" name="password" id="log_in_password" placeholder="Password" required>
 					<button class="sign_button" type="submit">Login</button>
 				</form>
 			</div>
