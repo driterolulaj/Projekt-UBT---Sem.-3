@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+function isUserLoggedIn() {
+    return isset($_SESSION['id']);
+}
+
+if (isUserLoggedIn()) {
+    $userId = $_SESSION['id'];
+    include_once '../repository/userRepository.php';
+    include_once '../models/user.php';
+
+    $userRepository = new UserRepository();
+    $user_Admin = $userRepository->getUserById($userId);
+    
+    $active = $_SESSION['active'];
+    $role = $_SESSION['role'];
+    echo '<script>';
+    echo 'let userRole = ' . json_encode($role) . ';';
+    echo '</script>';
+}else{
+    $userId = null;
+    echo '<script>';
+    echo 'let userId = ' . json_encode($userId) . ';';
+    echo '</script>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,14 +43,19 @@
 	<title>SunSpot</title>
 
     <style>
+        main{
+            margin-bottom: 400px;
+        }
+
         .cart-container {
             width: 1000px;
-            margin: 20px auto;
+            margin: 100px auto;
             background-color: #fff;
             padding: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
+            min-height: 185px;
         }
 
         .cart-item {
@@ -148,14 +181,14 @@
 			</svg>
 		</h3>
 		<nav>
-			<a href="/views/index.html">Home</a>
-			<a href="/views/products.html">Products</a>
-            <a href="/views/aboutus.html">About Us</a>
+			<a href="/Projekt-UBT---Sem.-3/views/index.php">Home</a>
+			<a href="/Projekt-UBT---Sem.-3/views/products.php">Products</a>
+            <a href="/Projekt-UBT---Sem.-3/views/aboutus.php">About Us</a>
 			<a onclick="scrollToSection('foot')">Contact</a>
             <a href="#">Cart</a>
 		</nav>
 		<nav class="login">
-			<a href="/views/signup.html">
+			<a href="/Projekt-UBT---Sem.-3/views/signup.php" id="signupLink">
 				<svg width="30" height="30" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
 						d="M335 343.43H65V300.06C65 254.02 102.33 216.69 148.37 216.69H251.63C297.67 216.69 335 254.02 335 300.06V343.43Z"
@@ -168,20 +201,40 @@
 			</a>
 		</nav>
 
+        <script>
+            let active = <?php echo json_encode($active); ?>;
+            var role = <?php echo json_encode($role); ?>;
+            var userId = <?php echo json_encode($userId); ?>;
+
+            document.getElementById('signupLink').addEventListener('click', function(event) {
+                if (active === 1) {   
+                    event.preventDefault();
+                    if(role === 'admin'){
+                        window.location.href = "/Projekt-UBT---Sem.-3/views/accountAdmin.php?id=" + userId;
+                    }else{
+                        window.location.href = "/Projekt-UBT---Sem.-3/views/account.php?id=" + userId;
+                    }
+                } 
+            });
+        </script>
+
 	</header>
+    
+    <main>
+        <button id="back-to-top" onclick="scrollToTop()" >^</button>
 
-    <div class="cart-container" id="cartContainer">
-        <h1>Shopping Cart</h1>
-        <hr>
-    </div>
-
+        <div class="cart-container" id="cartContainer">
+            <h1>Shopping Cart</h1>
+            <hr>
+        </div>
+    </main>
     <footer>
         <hr>
         <div id="foot" class="foot">
             <div class="aboutUs">
                 <h2 class="au">About Us</h2>
                 <div class="leftFooter">
-                    <a href="#"><p>Who We Are</p></a>
+                    <a href="/Projekt-UBT---Sem.-3/views/aboutus.php"><p>Who We Are</p></a>
                     <a href="#"><p>Gift Cards</p></a>
                     <a href="#"><p>Sell on SunSpot</p></a>
                     <a href="#"><p>Advertise With Us</p></a>
@@ -196,7 +249,6 @@
                 <h2 class="cs">Costumer Service</h2>
                 <div class="midFooter">
                     <a href="#"><p>My Orders</p></a>
-                    <a href="#"><p>My Account</p></a>
                     <a href="#"><p>Track My Order</p></a>
                     <a href="#"><p>Return Policy</p></a>
                     <a href="#"><p>Help Center</p></a>
@@ -243,41 +295,69 @@
 
     <script>
 
-        let cartItems = [];
 
-        document.addEventListener('DOMContentLoaded', function() {
-      
-        cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let cartItems = [];
 
-        const cartContainer = document.getElementById('cartContainer');
-
-        cartItems.forEach(item => {
-             const cartItem = document.createElement('div');
-             cartItem.classList.add('cart-item');
-
-        cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <div class="cart-item-details">
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price.toFixed(2)}</p>
-            </div>
-            <button onclick="removeItem(this, ${item.id})">Remove</button>
-        `;
-
-        cartContainer.appendChild(cartItem);
-            });
-
-            updateTotal();
+    document.addEventListener('DOMContentLoaded', function () { 
+    
+    fetch('/Projekt-UBT---Sem.-3/controller/fetchCartDataController.php')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Data received from the server:', data);
+            cartItems = data;
+            renderCart();
+        })
+        .catch(error => {
+            console.error('Error fetching cart data:', error)
+            if (userId==null) {
+                cartContainer.innerHTML = '<h1>Shopping Cart is Empty!</h1><hr><h2>You need to login first.</h2>';
+            } else {
+                cartContainer.innerHTML = '<h1>Shopping Cart is Empty!</h1><hr><h2>Try adding some products :)</h2>';
+            }
         });
+    });
+
+        function renderCart() {
+            const cartContainer = document.getElementById('cartContainer');
+            cartContainer.innerHTML = '';
+
+            if (cartItems.length === 0) {
+                if (userId==null) {
+                    cartContainer.innerHTML = '<h1>Shopping Cart is Empty!</h1><hr><h2>You need to login first.</h2>';
+                } else {
+                    cartContainer.innerHTML = '<h1>Shopping Cart is Empty!</h1><hr><h2>Try adding some products :)</h2>';
+                }
+            } else {
+                cartItems.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+
+                    const priceAsNumber = parseFloat(item.price);
+
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p>Price: $${priceAsNumber.toFixed(2)}</p>
+                        </div>
+                        <button onclick="removeItem(${item.item_id})">Remove</button>
+                    `;
+
+                    cartContainer.appendChild(cartItem);
+                });
+
+                updateTotal();
+            }
+        }
 
         function updateTotal() {
             const cartTotal = document.createElement('div');
             cartTotal.classList.add('cart-total');
 
-            const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+            const totalAmount = cartItems.reduce((total, item) => total + parseFloat(item.price), 0);
             cartTotal.innerHTML = `
                 <p>Total: $${totalAmount.toFixed(2)}</p>
-                <button onclick="checkout()">Checkout</button>
+                <button onclick="checkout(${totalAmount.toFixed(2)})">Checkout</button>
             `;
 
             const existingTotal = document.querySelector('.cart-total');
@@ -288,19 +368,60 @@
             }
         }
 
-            function removeItem(button, productId) {
-                const cartItem = button.parentElement;
-                cartItem.remove();
-
-                const indexToRemove = cartItems.findIndex(item => item.id === productId);
-                if (indexToRemove !== -1) {
-                    cartItems.splice(indexToRemove, 1);
+        function removeItem(productId) {
+            // Make a request to remove the item from the server
+            fetch(`/Projekt-UBT---Sem.-3/controller/removeFromCartController.php?productId=${productId}`, {
+                method: 'DELETE',
+            })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to remove item from cart');
                 }
+                return response.json();
+                })
+                .then(data => {
+                    console.log('Response from server:', data);
+                    if (data !== null) {
+                        cartItems = data;
+                        renderCart();
+                    } else {
+                        console.error('Unexpected response from server:', data);
+                    }
+                })
+                .catch(error => console.error('Error removing item from cart:', error));
+        }
 
-                updateTotal();
+        async function checkout(totalAmount) {
+            try {
+                const response = await fetch('/Projekt-UBT---Sem.-3/controller/checkoutController.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        totalAmount: totalAmount,
+                    }),
+                });
 
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                if (response.ok) {
+                    
+                        // Redirect based on the user's role
+                        if (userRole === 'admin') {
+                            console.log('Admin logged in!');
+                            window.location.href = 'http://localhost:8008/Projekt-UBT---Sem.-3/views/accountAdmin.php?id='+userId;
+                        } else if (userRole === 'user') {
+                            console.log('User logged in!');
+                            window.location.href = 'http://localhost:8008/Projekt-UBT---Sem.-3/views/account.php?id='+userId;
+                        } 
+                } else {
+                    console.error('Failed to checkout:', response.statusText);
+                    // If there's an error, you might want to handle it accordingly
+                }
+            } catch (error) {
+                console.error('Error during checkout:', error);
+                // Handle the error, e.g., show an error message to the user
             }
+        }
     </script>
 
 </body>

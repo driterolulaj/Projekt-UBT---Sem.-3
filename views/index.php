@@ -1,5 +1,30 @@
+<?php
+session_start();
+
+// session_unset();
+
+function isUserLoggedIn() {
+    return isset($_SESSION['id']);
+}
+
+if (isUserLoggedIn()) {
+    $userId = $_SESSION['id'];
+    include_once '../repository/userRepository.php';
+    include_once '../models/user.php';
+
+    $userRepository = new UserRepository();
+    $user_Admin = $userRepository->getUserById($userId);
+    
+    $active = $_SESSION['active'];
+    $role = $_SESSION['role'];
+}else{
+    $userId = null;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +32,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="../style/cards.css">
     <link rel="stylesheet" href="../style/footer.css">
     <link rel="stylesheet" href="../style/root.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <link rel="stylesheet" href="../style/home.css">
-    <link rel="stylesheet" href="../style/aboutus.css">
     <script src="../scripts/scroll_to_contact.js"></script>
-<link rel="stylesheet" href="../style/back_to_top.css">
+    <link rel="stylesheet" href="../style/back_to_top.css">
 
     <title>SunSpot</title>
-
+  
 </head>
-<body class="about_us_body">
+
+<body>
     <header>
         <h3 class="logo">SunSpot
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="50"
@@ -70,14 +96,14 @@
             </svg>
         </h3>
         <nav>
-            <a href="/views/index.html">Home</a>
-            <a href="/views/products.html">Products</a>
-            <a href="/views/aboutus.html">About Us</a>
+            <a href="#">Home</a>
+            <a href="/Projekt-UBT---Sem.-3/views/products.php">Products</a>
+            <a href="/Projekt-UBT---Sem.-3/views/aboutus.php">About Us</a>
             <a onclick="scrollToSection('foot')">Contact</a>
-            <a href="/views/cart.html">Cart</a>
+            <a href="/Projekt-UBT---Sem.-3/views/cart.php">Cart</a>
         </nav>
         <nav class="login">
-            <a href="/views/signup.html">
+            <a href="/Projekt-UBT---Sem.-3/views/signup.php" id="signupLink">
                 <svg width="30" height="30" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M335 343.43H65V300.06C65 254.02 102.33 216.69 148.37 216.69H251.63C297.67 216.69 335 254.02 335 300.06V343.43Z"
@@ -92,123 +118,37 @@
             </a>
         </nav>
 
-    </header>   
+        <script>
+            let active = <?php echo json_encode($active); ?>;
+            var role = <?php echo json_encode($role); ?>;
+            var userId = <?php echo json_encode($userId); ?>;
 
-    <main class="about_us_main">
+            document.getElementById('signupLink').addEventListener('click', function(event) {
+                if (active === 1) {   
+                    console.log("HellooooooOOOOOOOOOOOOOOOOOOOO");
+                    event.preventDefault();
+                    if(role === 'admin'){
+                        // window.location.href = "/Projekt-UBT---Sem.-3/views/accountAdmin.php?id=" + userId;
+                    }else{
+                        window.location.href = "/Projekt-UBT---Sem.-3/views/account.php?id=" + userId;
+                    }
+                } 
+            });
+        </script>
+
+    </header>
+
+    <div class="home_container" id="card_container">
         <button id="back-to-top" onclick="scrollToTop()" >^</button>
 
-        <div class="bgfoto">
-            <h1 class="bgHeader">We're here to help everyone, anywhere create their feeling of home.</h1>
-        </div>
+        <section class="hero">
+            <h1 class="home_title">Welcome to SUNSPOT</h1>
+            <p class="home_desc">Explore the latest in cutting-edge technology.</p>
+            <a href="/Projekt-UBT---Sem.-3/views/products.php" class="home_button">Discover Products</a>
+        </section>
 
-    
+    </div>
 
-        <div class="whatsNew">
-            <div class="whatsNewLeft">
-                <h1>What's New</h1>
-                <img class="bgimage2" src="../assets/bgimage2webp.webp" alt="image2">
-            </div>
-            <div class="whatsNewRight"> 
-                <div class="whatsNewRight1">
-                    <a href="#">COMPANY NEWS,</a>
-                    <a href="#">LIFESTYLE</a>
-                </div>
-                <h1>AllModern Opens in Austin, Featuring the Best of Modern for Home</h1>
-                <button>Learn More</button>
-            </div>
-        </div>
-
-        <div class="globalBrand">
-            <div class="globalBrand1">
-                <h1 style="font-size: 40px;">A Global Brand</h1>
-                <p>With global headquarters and an extensive network of logistics hubs and customer service centers, we're here to create that feeling of home for everyone, anywhere.</p>
-                <p style="font-weight: bold;">Corporate Offices: Purple Pins</p>
-                <p>Our corporate headquarters in Boston and Berlin are surrounded by world-class technology and educational institutions, providing access to top talent.</p>
-                
-                <p style="font-weight: bold;">Fulfillment & Home Delivery Network: Yellow Pins</p>
-                <p>We operate 18 fulfillment and 38 delivery centers representing millions of square feet across the U.S., Germany, Canada, and the U.K.</p>
-                
-                <p style="font-weight: bold;">Sales & Service Centers: Green Pins</p>
-                <p>Our Sales & Service teams in the U.S., Germany, Ireland, Canada, and the U.K. along with our virtual team allow us to meet the needs of our global customer base.</p>
-            </div>
-            <img class="bgimage3" src="../assets/bgimage3.webp" alt="image">
-        </div>
-
-     
-
-        <div class="facts">
-            <h1 style="font-size: 40px;">SunSpot Fast Facts</h1>
-            <div class="fact1">
-                <div>
-                    <p >One of the world's <br><b style="font-size: 40px;">largest </b><br>home retailers</p>
-                </div>
-                <div>
-                     <p ><b style="font-size: 40px;">$12.0 Billion</b><br> in net revenue for the twelve months ended <br>September 30, 2023.</p>
-                </div>
-                <div>
-                    <p >Serving <br><b style="font-size: 40px;">22.3 Million</b> <br>active customers and counting.</p>
-                </div>
-            </div>
-            <div class="fact2">
-                <div>
-                    <p> <b style="font-size: 40px;">Founder-led</b><br> since inception in 2002.</p>
-                </div>
-                <div>
-                    <p> Home to <br>
-                        <b style="font-size: 40px;">>40 Million</b><br>
-                        products for any home need from 20K+ <br>suppliers.
-                    </p>
-                </div>
-                <div>
-                    <p>
-                    More than <br>
-                    <b style="font-size: 40px;">14K</b> <br>
-                    employees with operations in North America <br> and Europe.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="exploreUsParent">
-            <h1 style="text-align: center; font-size: 40px;">Explore More About Us</h1>
-            <div class="exploreUs">
-                
-                <div class="exploreUsBox">
-                    <a href="#"><img src="../assets/exloreimage1.webp" alt="image"></a>
-                    <a href="#"><h2>Who We Are</h2></a>
-                    <a href="#"><p>Learn More -></p></a>
-                </div>
-                <div class="exploreUsBox">
-                    <a href=""><img src="../assets/exploreimage2.webp" alt="image"></a>
-                    <a href=""><h2>Our Impact</h2></a>
-                    <a href="#"><p>Learn More -></p></a>
-                </div>
-                <div class="exploreUsBox">
-                    <a href=""><img src="../assets/exploreimage3.webp" alt="image"></a>
-                    <a href=""><h2>Careers</h2></a>
-                    <a href="#"><p>Learn More -></p></a>
-                </div>
-                <div class="exploreUsBox">
-                    <a href=""><img src="../assets/investor.jpg" alt="image"></a>
-                    <a href=""><h2>Investor Relations</h2></a>
-                    <a href="#"><p>Learn More -></p></a>
-                </div>
-                <div class="exploreUsBox">
-                    <a href=""><img src="../assets/news.webp" alt="image"></a>
-                    <a href=""><h2>News & Stories</h2></a>
-                    <a href="#"><p>Learn More -></p></a>
-                </div>
-                <div class="exploreUsBox">
-                    <a href=""><img src="../assets/partner.webp" alt="image"></a>
-                    <a href=""><h2>Partner With Us</h2></a>
-                    <a href="#"><p>Learn More -></p></a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </main>
 
     <footer>
         <hr>
@@ -216,7 +156,7 @@
             <div class="aboutUs">
                 <h2 class="au">About Us</h2>
                 <div class="leftFooter">
-                    <a href="#"><p>Who We Are</p></a>
+                    <a href="/Projekt-UBT---Sem.-3/views/aboutus.php"><p>Who We Are</p></a>
                     <a href="#"><p>Gift Cards</p></a>
                     <a href="#"><p>Sell on SunSpot</p></a>
                     <a href="#"><p>Advertise With Us</p></a>
@@ -230,8 +170,7 @@
             <div class="costumerService">
                 <h2 class="cs">Costumer Service</h2>
                 <div class="midFooter">
-                    <a href="/views/cart.html"><p>My Orders</p></a>
-                    <a href="#"><p>My Account</p></a>
+                    <a href="/Projekt-UBT---Sem.-3/views/cart.php"><p>My Orders</p></a>
                     <a href="#"><p>Track My Order</p></a>
                     <a href="#"><p>Return Policy</p></a>
                     <a href="#"><p>Help Center</p></a>
@@ -276,6 +215,5 @@
         &copy; SunSpot LLC. 2024 Home Appliances Store. All rights reserved.
     </footer>
 
-   
 </body>
 </html>

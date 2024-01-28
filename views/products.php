@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+function isUserLoggedIn() {
+    return isset($_SESSION['id']);
+}
+
+if (isUserLoggedIn()) {
+    $userId = $_SESSION['id'];
+    include_once '../repository/userRepository.php';
+    include_once '../models/user.php';
+
+    $userRepository = new UserRepository();
+    $user_Admin = $userRepository->getUserById($userId);
+    
+    $active = $_SESSION['active'];
+    $role = $_SESSION['role'];
+}else{
+    $userId = null;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,14 +147,14 @@
 			</svg>
 		</h3>
 		<nav>
-			<a href="/views/index.html">Home</a>
-			<a href="/views/products.html">Products</a>
-            <a href="/views/aboutus.html">About Us</a>
+			<a href="/Projekt-UBT---Sem.-3/views/index.php">Home</a>
+			<a href="#">Products</a>
+            <a href="/Projekt-UBT---Sem.-3/views/aboutus.php">About Us</a>
 			<a onclick="scrollToSection('foot')">Contact</a>
-			<a href="/views/cart.html">Cart</a>
+			<a href="/Projekt-UBT---Sem.-3/views/cart.php">Cart</a>
 		</nav>
 		<nav class="login">
-			<a href="/views/signup.html">
+			<a href="/Projekt-UBT---Sem.-3/views/signup.php" id="signupLink">
 				<svg width="30" height="30" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
 						d="M335 343.43H65V300.06C65 254.02 102.33 216.69 148.37 216.69H251.63C297.67 216.69 335 254.02 335 300.06V343.43Z"
@@ -144,6 +166,24 @@
 
 			</a>
 		</nav>
+
+		<script>
+
+            let active = <?php echo json_encode($active); ?>;
+            var role = <?php echo json_encode($role); ?>;
+            var userId = <?php echo json_encode($userId); ?>;
+
+            document.getElementById('signupLink').addEventListener('click', function(event) {
+                if (active === 1) {   
+                    event.preventDefault();
+                    if(role === 'admin'){
+                        window.location.href = "/Projekt-UBT---Sem.-3/views/accountAdmin.php?id=" + userId;
+                    }else{
+                        window.location.href = "/Projekt-UBT---Sem.-3/views/account.php?id=" + userId;
+                    }
+                } 
+            });
+        </script>
 	
 	</header>
 
@@ -155,14 +195,14 @@
 		</div>
 
 			<div class="slider">
-					<a href="/views/item.html?id=1"><img src="https://cackle.co.nz/hardware/wp-content/uploads/sites/3/2023/06/510288-0.jpg" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=2"><img src="https://www.business2community.com/wp-content/uploads/2013/04/HP-Envy-Spectre-XT-Review.jpg" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=3"><img src="https://reviewed-com-res.cloudinary.com/image/fetch/s--NMTqMJpN--/b_white,c_limit,cs_srgb,f_auto,fl_progressive.strip_profile,g_center,q_auto,w_792/https://reviewed-production.s3.amazonaws.com/attachment/94d18a105bcf4a2d/Dell-Inspiron-14-7420-About.jpg" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=4"><img src="https://laptopmedia.com/wp-content/uploads/2020/12/Aspire5_KSP6.jpg" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=5"><img src="https://cdn.mos.cms.futurecdn.net/Q2eW2m6uASnYsWRn5m7mr4.jpg" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=6"><img src="https://www.apple.com/v/ipad-pro/am/images/overview/hero/hero_combo__fcqcc3hbzjyy_large.jpg" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=7"><img src="https://external-preview.redd.it/hv_h2fMMFVz19ifVH9vHmVL_2-tOqlTt9bPmu7GZyXo.jpg?auto=webp&s=5ec5a6149ced1076ded1941ee8cb18d3e0eae603" class="slide" alt="" ></a>
-					<a href="/views/item.html?id=8"><img src="https://www.pcworld.com/wp-content/uploads/2023/04/fitbitlineup-100900381-orig.jpg?quality=50&strip=all&w=1024" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=1"><img src="https://cackle.co.nz/hardware/wp-content/uploads/sites/3/2023/06/510288-0.jpg" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=2"><img src="https://www.business2community.com/wp-content/uploads/2013/04/HP-Envy-Spectre-XT-Review.jpg" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=3"><img src="https://reviewed-com-res.cloudinary.com/image/fetch/s--NMTqMJpN--/b_white,c_limit,cs_srgb,f_auto,fl_progressive.strip_profile,g_center,q_auto,w_792/https://reviewed-production.s3.amazonaws.com/attachment/94d18a105bcf4a2d/Dell-Inspiron-14-7420-About.jpg" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=4"><img src="https://laptopmedia.com/wp-content/uploads/2020/12/Aspire5_KSP6.jpg" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=5"><img src="https://cdn.mos.cms.futurecdn.net/Q2eW2m6uASnYsWRn5m7mr4.jpg" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=6"><img src="https://www.apple.com/v/ipad-pro/am/images/overview/hero/hero_combo__fcqcc3hbzjyy_large.jpg" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=7"><img src="https://external-preview.redd.it/hv_h2fMMFVz19ifVH9vHmVL_2-tOqlTt9bPmu7GZyXo.jpg?auto=webp&s=5ec5a6149ced1076ded1941ee8cb18d3e0eae603" class="slide" alt="" ></a>
+					<a href="/Projekt-UBT---Sem.-3/views/item.php?id=8"><img src="https://www.pcworld.com/wp-content/uploads/2023/04/fitbitlineup-100900381-orig.jpg?quality=50&strip=all&w=1024" class="slide" alt="" ></a>
 			</div>
 
 		<div class="nav" style="margin: 250px 300px 0 0;">
@@ -287,40 +327,36 @@
 					container.appendChild(card);
 
 					card.addEventListener('click', () => {
-						window.location.replace('/views/item.html?id=' + device.id)
+						window.location.replace('/Projekt-UBT---Sem.-3/views/item.php?id=' + device.id)
 					})
 
-					add_to_cart.addEventListener('click', () => {
-						fetchedProduct = device;
-						fillCart(fetchedProduct);
-					})
 				
 				});
 			})
 			.catch(error => console.error('Error fetching data:', error));
 
-			let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+			// let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-			function fillCart(product) {
-				const cartContainer = document.getElementById('card-container');
+			// function fillCart(product) {
+			// 	const cartContainer = document.getElementById('card-container');
 
-				const cartItem = document.createElement('div');
-				cartItem.classList.add('cart-item');
+			// 	const cartItem = document.createElement('div');
+			// 	cartItem.classList.add('cart-item');
 
-				cartItem.innerHTML = `
-					<img src="${product.image}" alt="${product.name}">
-					<div class="cart-item-details">
-						<h3>${product.name}</h3>
-						<p>Price: $${product.price.toFixed(2)}</p>
-					</div>
-					<button onclick="removeItem(this, ${product.id})">Remove</button>
-				`;
+			// 	cartItem.innerHTML = `
+			// 		<img src="${product.image}" alt="${product.name}">
+			// 		<div class="cart-item-details">
+			// 			<h3>${product.name}</h3>
+			// 			<p>Price: $${product.price.toFixed(2)}</p>
+			// 		</div>
+			// 		<button onclick="removeItem(this, ${product.id})">Remove</button>
+			// 	`;
 
-				cartItems.push(product);
-				localStorage.setItem('cartItems', JSON.stringify(cartItems));
+			// 	cartItems.push(product);
+			// 	localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-				window.location.href = 'http://127.0.0.1:5500/views/cart.html'; 
-			}
+			// 	window.location.href = 'http://localhost:8008/Projekt-UBT---Sem.-3/views/cart.php'; 
+			// }
 
 	</script>
 
@@ -345,7 +381,7 @@
 		<div class="costumerService">
 			<h2 class="cs">Costumer Service</h2>
 			<div class="midFooter">
-				<a href="/views/cart.html"><p>My Orders</p></a>
+				<a href="/Projekt-UBT---Sem.-3/views/cart.php"><p>My Orders</p></a>
 				<a href="#"><p>My Account</p></a>
 				<a href="#"><p>Track My Order</p></a>
 				<a href="#"><p>Return Policy</p></a>

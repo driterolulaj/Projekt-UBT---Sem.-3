@@ -1,7 +1,6 @@
 footer {
     background-color: rgb(var(--dark));
     color: rgb(var(--light));
-    /* padding: 10px; */
     text-align: center;
     width: 100%;
 }

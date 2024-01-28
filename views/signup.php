@@ -1,3 +1,8 @@
+<?php
+
+	include_once '../controller/loginController.php';
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -17,8 +22,6 @@
 
 
 	<title>SunSpot</title>
-
-
 	<link rel="stylesheet" href="../style/signup.css">
 </head>
 
@@ -72,11 +75,11 @@
 			</svg>
 		</h3>
 		<nav>
-			<a href="/views/index.html">Home</a>
-			<a href="/views/products.html">Products</a>
-            <a href="/views/aboutus.html">About Us</a>
+			<a href="/Projekt-UBT---Sem.-3/views/index.php">Home</a>
+			<a href="/Projekt-UBT---Sem.-3/views/products.php">Products</a>
+            <a href="/Projekt-UBT---Sem.-3/views/aboutus.php">About Us</a>
 			<a onclick="scrollToSection('foot')">Contact</a>
-			<a href="/views/cart.html">Cart</a>
+			<a href="/Projekt-UBT---Sem.-3/views/cart.php">Cart</a>
 		</nav>
 		<nav class="login">
 
@@ -90,21 +93,22 @@
 			<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form onsubmit="return validateSignUp()" novalidate>
-					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="user_name" id="sign_up_user_name" placeholder="User name" required="">
+				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" onsubmit="return validateSignUp()" novalidate>
+					<label for="chk" aria-hidden="true" class="title">Sign up</label>
+					<input type="text" name="username" id="sign_up_user_name" placeholder="User name" required="">
 					<input type="email" name="email" id="sign_up_email" placeholder="Email" required="">
 					<input type="password" name="password" id="sign_up_password" placeholder="Password" required="">
-					<button class="sign_button" type="submit">Sign up</button>
+					<button class="sign_button" name="registerBtn" type="submit">Sign up</button>
 				</form>
+				<?php include_once '../controller/registerController.php';?>
 			</div>
 
 			<div class="login">
-				<form action="login.php" method="post">
-					<label for="chk" aria-hidden="true">Login</label>
+				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" onsubmit="return validateLogIn()" novalidate >
+					<label for="chk" aria-hidden="true" class="title">Login</label>
 					<input type="email" name="email" id="log_in_email" placeholder="Email" required>
 					<input type="password" name="password" id="log_in_password" placeholder="Password" required>
-					<button class="sign_button" type="submit">Login</button>
+					<button class="sign_button" name="loginBtn" type="submit">Login</button>
 				</form>
 			</div>
 		</div>
@@ -184,7 +188,7 @@
 		<div class="aboutUs">
 			<h2 class="au">About Us</h2>
 			<div class="leftFooter">
-				<a href="#"><p>Who We Are</p></a>
+				<a href="/Projekt-UBT---Sem.-3/views/aboutus.php"><p>Who We Are</p></a>
 				<a href="#"><p>Gift Cards</p></a>
 				<a href="#"><p>Sell on SunSpot</p></a>
 				<a href="#"><p>Advertise With Us</p></a>
@@ -198,8 +202,7 @@
 		<div class="costumerService">
 			<h2 class="cs">Costumer Service</h2>
 			<div class="midFooter">
-				<a href="/views/cart.html"><p>My Orders</p></a>
-				<a href="#"><p>My Account</p></a>
+				<a href="/Projekt-UBT---Sem.-3/views/cart.php"><p>My Orders</p></a>
 				<a href="#"><p>Track My Order</p></a>
 				<a href="#"><p>Return Policy</p></a>
 				<a href="#"><p>Help Center</p></a>

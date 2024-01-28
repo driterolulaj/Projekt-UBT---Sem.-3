@@ -7,9 +7,9 @@
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- START TRANSACTION;
+-- SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `sunspot`
 --
-
+CREATE DATABASE  IF NOT EXISTS `sunspot`;
+USE `sunspot`;
 -- --------------------------------------------------------
 
 --
@@ -71,11 +72,6 @@ CREATE TABLE `products` (
 -- Table structure for table `type`
 --
 
-CREATE TABLE `type` (
-  `type_id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- --------------------------------------------------------
 
 --
@@ -104,14 +100,11 @@ ALTER TABLE `cart_items`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `type` (`type`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `type`
---
-ALTER TABLE `type`
-  ADD PRIMARY KEY (`type_id`);
+
 
 --
 -- Indexes for table `users`
@@ -138,8 +131,6 @@ ALTER TABLE `products`
 --
 -- AUTO_INCREMENT for table `type`
 --
-ALTER TABLE `type`
-  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -160,10 +151,8 @@ ALTER TABLE `cart_items`
 
 --
 -- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `type` FOREIGN KEY (`type`) REFERENCES `type` (`type_id`);
-COMMIT;
+
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
