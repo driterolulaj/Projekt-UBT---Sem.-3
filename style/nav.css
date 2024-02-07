@@ -1,0 +1,62 @@
+
+header {
+	background-color:rgb(var(--dark));
+	padding: 5px 50px;
+	height: 70px;
+	color:rgb(var(--light));
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: background-color 0.3s, color 0.3s;
+	user-select: none;
+}
+
+nav {
+	display: flex;
+	gap: 20px;
+	
+}
+
+nav a {
+	text-decoration: none;
+	color:rgb(var(--light));
+	position: relative;
+	transition: opacity 0.2s;
+	opacity: 0.75;
+}
+
+nav a:hover {
+	opacity: 1;
+	transition: opacity 0.2s;
+
+}
+
+nav a::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 2px;
+	background-color:rgb(var(--brown-dark));
+	transition: width 0.3s;
+	bottom: -4px;
+	left: 0;
+	opacity: 1;
+
+
+}
+
+nav a:hover::after {
+	width: 100%;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	font-family: 'Dune_Rise';
+
+}
+
+.logo>* {
+	padding: 0px 10px;
+}
