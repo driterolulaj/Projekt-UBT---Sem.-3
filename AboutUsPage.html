@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway&display=swap"
-        rel="stylesheet">
-    <title>SunSpot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About SunSpot | Who We Are</title>
     <style>
         :root{
             --dark:#58626c ;
@@ -46,8 +41,6 @@
 
         header {
             background-color: var(--dark);
-            padding-top: 5px;
-            padding-bottom: 5px;
             color: var(--light);
             transition: background-color 0.3s, color 0.3s;
             user-select: none;
@@ -60,6 +53,7 @@
         nav {
             display: flex;
             gap: 20px;
+            font-size:17px;
         }
 
         nav a {
@@ -98,62 +92,22 @@
             align-items: center;
             font-family: 'Dune_Rise';
             cursor: pointer;
-           color: #ecc1a1;
+            color: #ecc1a1;
         }
 
         .logo>* {
             padding: 0px 10px; 
         }
 
+        .logo>a{
+             text-decoration: none;
+        }
+
         #dark-mode-toggle {
+            font-size: 17px;
             cursor: pointer;
-            padding: 5px 60px;
+            padding: 0px 60px;
             padding-left: 0%;
-        }
-
-        .container {
-            flex-wrap: wrap;
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 20px ;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .product {
-            background-color: var(--brown-light);
-            color: var(--dark);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: scale(1.017);
-        }
-
-        .product button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            background-color: var(--light);
-            color: var(--dark);
-            border: 1px solid var(--dark);
-            border-radius: 25px;
-            transition: 0.2s;
-        }
-
-        .product button:hover {
-            color: var(--light);
-            background-color: var(--dark);
-            transition: 0.2s;
-
         }
 
         footer {
@@ -281,43 +235,7 @@
             display: flex;
             padding: 4px 0;
             justify-content: center;
-        }
-
-        .search_bar{
-            margin-right: 30px;
-            width: 1200px;
-            max-width: 550px;
-            display: flex;
             align-items: center;
-            border-radius: 60px;
-            border: 1px solid white;
-        }
-
-        .search_bar input{
-            padding: 10px 17px;
-            flex: 1;
-            background: transparent;
-            outline: none;
-            border: 0;
-            color: white;
-        }
-
-        .search_bar ::placeholder{
-            color: white;
-        }
-
-
-        .search_bar button img{
-            width: 25px;
-        }
-
-        .search_bar button{
-            border: 0;
-            border-radius: 50%;
-            width: 50px;
-            height: 40px;
-            background: none;
-            cursor: pointer;
         }
 
         #back-to-top{
@@ -342,56 +260,184 @@
             opacity: 0.8;
         }
 
-        .aboutSunSpot {
-            flex-wrap: wrap;
-            max-width: 1500px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            
-        }
-
-        .aboutSunSpot>a{
-            text-decoration: none;
-        }
-
-        .aboutUsBox {
-            background-color: var(--brown-dark);
-            color: var(--dark);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            transition: transform 0.3s;
-            text-align: center;
-            width: 450px;
-            height: 360px;
-        }
-
-
-        .aboutUsBox:hover {
-            transform: scale(1.017);
-        }
-
-        .aboutUsFoto{
-            filter:grayscale(100%);
-            width: 450px;
-            height: 240px;
-        }
-            
         #logoLink{
             text-decoration: none;
             color: white;
         }
+
+        .bgfoto{
+            padding-top: 30px;
+            background-image: url("bgimage.jpg");
+            width: 100%;
+            height: 500px;
+            background-size: 100% 150%;
+            display: flex;
+            color: white;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bgHeader{
+            width: 500px;
+            font-weight: bold;
+            padding-right: 600px;
+            font-size: 50px;
+        }
+        
+        .bgimage2{
+            width: 480px;
+            height: 380px;
+            border-radius: 10px;
+        }
+
+        .whatsNew{
+            display: flex;
+            justify-content: center;
+            padding: 30px 0;
+            padding-right: 50px;
+        }
+
+        .whatsNewLeft{
+            font-size: 24px;  
+        }
+        .whatsNewRight{
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            padding-left: 100px;
+            justify-content: center;
+            width: 450px;
+        }
+
+        .whatsNewRight>button{
+            margin-right: 240px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: var(--brown-dark);
+            color: var(--light);
+            border: 1px solid var(--brown-dark);
+            border-radius: 25px;
+            transition: 0.2s;
+            width: 35%;
+        }
+
+        .whatsNewRight>button:hover {
+            color: var(--brown-dark);
+            background-color: var(--light);
+            transition: 0.2s;
+            cursor: pointer;
+        }
+    
+
+        .whatsNewRight1>a{
+            text-decoration: none;
+            color:#ecc1a1;
+            
+        }
+
+        .whatsNewRight1>a:hover{
+            text-decoration: underline;
+        }
+
+        .globalBrand{
+            padding: 50px 200px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .globalBrand1{
+            width: 350px;
+            height: 200px;
+        }
+
+        .bgimage3{
+            padding-top: 40px;
+            width: 630px;
+            height: 500px;
+            padding-left: 50px;
+            padding-right: 40px;
+            filter: grayscale(100%);
+        }
+
+        .facts{
+            margin-top: 50px;
+            background-color:#ecc1a1;
+            width: 100%;
+            height: 580px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fact1{
+            padding:40px 0;
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .fact2{
+            padding:40px 0;
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .exploreUs{
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-bottom: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .exploreUsBox{
+            padding: 20px 0;
+            margin: 20px 0;
+            transition: transform 0.3s;
+            text-align: left;
+            width: 330px;
+            height: 300px;
+        }
+
+        .exploreUsBox img{
+            width: 330px;
+            height: 240px;
+            border-radius: 10px;
+        }
+
+        .exploreUsBox a{
+            text-decoration: none;
+        }
+
+        .exploreUsBox a h2{
+            color: #58626c;
+        }
+
+        .exploreUsBox a h2:hover{
+            color: #ecc1a1;
+        }
+
+        .exploreUsBox a p{
+            color:#ecc1a1;
+        }
     </style>
 </head>
-
 <body>
     <header>
         <div class="top_header">
-            <a id="logoLink" href="index.html">
+            <a id="logoLink" href="AboutUsPage.html">
                 <h3 class="logo">SunSpot<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         version="1.1" width="50" height="50" viewBox="0 0 100 100" xml:space="preserve">
 
@@ -437,21 +483,16 @@
                                 transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
                         </g>
                     </svg>
+                    <p> | About Us</p>
                 </h3>
-            </a>
-                <div class="search_bar_container">
-                    <form action="" class="search_bar">
-                        <input type="text" placeholder="Find anything home...">
-                        <button type="submit"><img src="icons8-search-50.png" alt="search_button"></button>
-                    </form>
-                </div>
+             </a>
 
             <div id="dark-mode-toggle">Toggle Dark Mode</div>
         </div>
         <hr>
         <div class="second_header">
             <nav>
-                <a href="#">Home</a>
+                <a href="index.html">Home</a>
                 <a href="AboutUsPage.html">About Us</a>
                 <a onclick="scrollToSection('foot')">Contact</a>
                 <a href="AccountPage.html">Account</a>
@@ -461,76 +502,118 @@
     </header>
 
     <main>
-
         <button id="back-to-top" onclick="scrollToTop()" >^</button>
 
-        <div class="container">
-            <div class="product">
-                <h2>Product Name 1</h2>
-                <p>Description of the product goes here.</p>
-                <button class="">Add to Cart</button>
-            </div>
+        <div class="bgfoto">
+            <h1 class="bgHeader">We're here to help everyone, anywhere create their feeling of home.</h1>
+        </div>
 
-            <div class="product">
-                <h2>Product Name 2</h2>
-                <p>Description of the product goes here.</p>
-                <button class="">Add to Cart</button>
-            </div>
+        <br>
 
-            <!-- Add more products as needed -->
+        <div class="whatsNew">
+            <div class="whatsNewLeft">
+                <h1>What's New</h1>
+                <img class="bgimage2" src="bgimage2webp.webp" alt="image2">
+            </div>
+            <div class="whatsNewRight"> 
+                <div class="whatsNewRight1">
+                    <a href="#">COMPANY NEWS,</a>
+                    <a href="#">LIFESTYLE</a>
+                </div>
+                <h1>AllModern Opens in Austin, Featuring the Best of Modern for Home</h1>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <br>
+        <div class="globalBrand">
+            <div class="globalBrand1">
+                <h1 style="font-size: 40px;">A Global Brand</h1>
+                <p>With global headquarters and an extensive network of logistics hubs and customer service centers, we're here to create that feeling of home for everyone, anywhere.</p>
+                <p style="font-weight: bold;">Corporate Offices: Purple Pins</p>
+                <p>Our corporate headquarters in Boston and Berlin are surrounded by world-class technology and educational institutions, providing access to top talent.</p>
+                
+                <p style="font-weight: bold;">Fulfillment & Home Delivery Network: Yellow Pins</p>
+                <p>We operate 18 fulfillment and 38 delivery centers representing millions of square feet across the U.S., Germany, Canada, and the U.K.</p>
+                
+                <p style="font-weight: bold;">Sales & Service Centers: Green Pins</p>
+                <p>Our Sales & Service teams in the U.S., Germany, Ireland, Canada, and the U.K. along with our virtual team allow us to meet the needs of our global customer base.</p>
+            </div>
+            <img class="bgimage3" src="bgimage3.webp" alt="image">
+        </div>
+
+        <br>
+
+        <div class="facts">
+            <h1 style="font-size: 40px;">SunSpot Fast Facts</h1>
+            <div class="fact1">
+                <div>
+                    <p >One of the world's <br><b style="font-size: 40px;">largest </b><br>home retailers</p>
+                </div>
+                <div>
+                     <p ><b style="font-size: 40px;">$12.0 Billion</b><br> in net revenue for the twelve months ended <br>September 30, 2023.</p>
+                </div>
+                <div>
+                    <p >Serving <br><b style="font-size: 40px;">22.3 Million</b> <br>active customers and counting.</p>
+                </div>
+            </div>
+            <div class="fact2">
+                <div>
+                    <p> <b style="font-size: 40px;">Founder-led</b><br> since inception in 2002.</p>
+                </div>
+                <div>
+                    <p> Home to <br>
+                        <b style="font-size: 40px;">>40 Million</b><br>
+                        products for any home need from 20K+ <br>suppliers.
+                    </p>
+                </div>
+                <div>
+                    <p>
+                    More than <br>
+                    <b style="font-size: 40px;">14K</b> <br>
+                    employees with operations in North America <br> and Europe.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br>
+
+
+        <h1 style="text-align: center; font-size: 40px;">Explore More About Us</h1>
+        <div class="exploreUs">
             
-            <div class="product">
-                <h2>Product Name 3</h2>
-                <p>Description of the product goes here.</p>
-                <button class="">Add to Cart</button>
+            <div class="exploreUsBox">
+                <a href="#"><img src="exloreimage1.webp" alt="image"></a>
+                <a href="#"><h2>Who We Are</h2></a>
+                <a href="#"><p>Learn More -></p></a>
             </div>
-
-            <div class="product">
-                <h2>Product Name 4</h2>
-                <p>Description of the product goes here.</p>
-                <button class="">Add to Cart</button>
+            <div class="exploreUsBox">
+                <a href=""><img src="exploreimage2.webp" alt="image"></a>
+                <a href=""><h2>Our Impact</h2></a>
+                <a href="#"><p>Learn More -></p></a>
             </div>
-
-            <div class="product">
-                <h2>Product Name 5</h2>
-                <p>Description of the product goes here.</p>
-                <button class="">Add to Cart</button>
+            <div class="exploreUsBox">
+                <a href=""><img src="exploreimage3.webp" alt="image"></a>
+                <a href=""><h2>Careers</h2></a>
+                <a href="#"><p>Learn More -></p></a>
             </div>
-
-            <div class="product">
-                <h2>Product Name 6</h2>
-                <p>Description of the product goes here.</p>
-                <button class="">Add to Cart</button>
+            <div class="exploreUsBox">
+                <a href=""><img src="investor.jpg" alt="image"></a>
+                <a href=""><h2>Investor Relations</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="news.webp" alt="image"></a>
+                <a href=""><h2>News & Stories</h2></a>
+                <a href="#"><p>Learn More -></p></a>
+            </div>
+            <div class="exploreUsBox">
+                <a href=""><img src="partner.webp" alt="image"></a>
+                <a href=""><h2>Partner With Us</h2></a>
+                <a href="#"><p>Learn More -></p></a>
             </div>
         </div>
-
-        <div id="aboutSunSpotHeader">
-            <h1 style="text-align: center;">What We're Doing to Make an Impact</h1>
-        </div>
-
-        <div id="aboutSunSpot" class="aboutSunSpot">
-            <a href="AboutUsPage.html">
-                <div class="aboutUsBox">
-                    <img class="aboutUsFoto" src="default_name.webp" alt="">
-                    <h2>Contributin to All the Homes We Share</h2>
-                    <p>Learn more about our DEI, Social Impact, and Sustainability Work...</p>
-                </div>
-            </a>
-            <a href="AboutUsPage.html">
-                <div class="aboutUsBox">
-                    <img class="aboutUsFoto" src="default_name2.webp" alt="">
-                    <h2>Building Supplier Diversity</h2>
-                    <p>Learn more about the creators behind the businesses...</p>
-                </div>
-            </a>
-            <a href="AboutUsPage.html">
-                <div class="aboutUsBox">
-                    <img class="aboutUsFoto" src="default_name3.webp" alt="">
-                    <h2>All Things Home, Sustainably</h2>
-                    <p>Discover so many (easy!) ways to live more sustainably...</p>
-                </div>
-            </a>
-        </div>
+        
     </main>
 
     <footer>
@@ -539,7 +622,7 @@
             <div class="aboutUs">
                 <h2 class="au">About Us</h2>
                 <div class="leftFooter">
-                    <a href="AboutUsPage.html"><p>About SunSpot</p></a>
+                    <a href="#"><p>Who We Are</p></a>
                     <a href="#"><p>Gift Cards</p></a>
                     <a href="#"><p>Sell on SunSpot</p></a>
                     <a href="#"><p>Advertise With Us</p></a>
@@ -584,10 +667,10 @@
         <hr>
 
         <div class="socialMedia">
-            <a href="https://twitter.com/"><img src="icons8-twitterx-50.png" alt="twitter"></a>
-            <a href="https://www.facebook.com/"><img src="icons8-facebook-64.png" alt="facebook"></a>
-            <a href="https://www.pinterest.com/"><img src="icons8-pinterest-50.png" alt="pinterest"></a>
-            <a href="https://www.instagram.com/"><img src="instagram.png" alt="instagram"></a>
+            <a href="#"><img src="icons8-twitterx-50.png" alt="twitter"></a>
+            <a href="#"><img src="icons8-facebook-64.png" alt="facebook"></a>
+            <a href="#"><img src="icons8-pinterest-50.png" alt="pinterest"></a>
+            <a href="#"><img src="instagram.png" alt="instagram"></a>
         </div>
         <br>
         <div class="termsOfUse">
@@ -610,7 +693,6 @@
         function scrollToSection(section){
             const section1 = document.getElementById('foot');
             if(section==='foot'){
-                console.log('Scrolling to section1');
                 section1.scrollIntoView({behavior:'smooth'});
             }
             else{
@@ -639,5 +721,4 @@
         }
     </script>
 </body>
-
 </html>
